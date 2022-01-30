@@ -1,14 +1,22 @@
-import DummyClass from "../src/ksqldb-client"
+import { KsqlDBClient } from '../src/ksqldb-client';
 
-/**
- * Dummy test
- */
-describe("Dummy test", () => {
-  it("works if true is truthy", () => {
-    expect(true).toBeTruthy()
+describe("ksqlDB Client", () => {
+
+  let client: KsqlDBClient;
+
+  beforeEach(() => {
+    client = new KsqlDBClient("http://localhost:8089");
   })
 
-  it("DummyClass is instantiable", () => {
-    expect(new DummyClass()).toBeInstanceOf(DummyClass)
+  describe('Info endpoint', () => {
+
+    it("should return the state of the cluster", async () => {
+
+      const res = await client.listStreamsExtended();
+      console.log(JSON.stringify(res));
+
+      expect(res).toBeTruthy();
+    })
   })
+
 })
