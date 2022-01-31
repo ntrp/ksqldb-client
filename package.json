@@ -1,5 +1,5 @@
 {
-  "name": "ksqldb-client",
+  "name": "@ntrp/ksqldb-client",
   "version": "0.1.0",
   "description": "",
   "keywords": [],

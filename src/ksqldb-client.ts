@@ -67,7 +67,7 @@ export class KsqlDBClient {
           'Content-Length': buffer.length
         }
       }, (res: any) => {
-        this.getBody<T>(res).then((data) => resolve(data)).catch((e) => reject(e));
+        this.getBody<T[]>(res).then((data) => resolve(data[0])).catch((e) => reject(e));
       })
         .end(buffer);
     })
