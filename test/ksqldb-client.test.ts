@@ -5,17 +5,25 @@ describe("ksqlDB Client", () => {
   let client: KsqlDBClient;
 
   beforeEach(() => {
-    client = new KsqlDBClient("http://localhost:8089");
+    client = new KsqlDBClient("http://localhost:8088");
   })
 
   describe('Info endpoint', () => {
 
-    it("should return the state of the cluster", async () => {
+    it("should return the state of the cluster", (done) => {
 
-      const res = await client.listStreamsExtended();
-      console.log(JSON.stringify(res));
-
-      expect(res).toBeTruthy();
+      client.queryStream<any>({
+        sql: 'SELECT * FROM pub_state_table WHERE station = \'hbw\';',
+        streamsProperties: {
+          'ksql.streams.auto.offset.reset': "earliest"
+        }
+      }).subscribe({
+        next: d => console.log(JSON.stringify(d)),
+        complete: () => {
+          client.close();
+          done();
+        }
+      });
     })
   })
 
