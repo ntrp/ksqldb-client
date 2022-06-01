@@ -6,9 +6,10 @@
     "KsqlDB",
     "ksql"
   ],
-  "main": "dist/ksqldb-client.umd.js",
-  "module": "dist/ksqldb-client.es5.js",
-  "typings": "dist/types/ksqldb-client.d.ts",
+  "main": "dist/ksqldb-client.cjs.js",
+  "module": "dist/ksqldb-client.esm.js",
+  "browser": "dist/ksqldb-client.umd.js",
+  "types": "dist/types/ksqldb-client.d.ts",
   "files": [
     "dist"
   ],
