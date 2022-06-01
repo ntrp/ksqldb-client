@@ -1,6 +1,6 @@
 {
-  "name": "@ntrp/ksqldb-client",
-  "version": "0.0.0-development",
+  "name": "ksqldb-rx-client",
+  "version": "0.0.1",
   "description": "A KsqlDB javascript client leveraging observables and promises",
   "keywords": [
     "KsqlDB",
